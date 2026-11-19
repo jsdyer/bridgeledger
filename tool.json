@@ -1,16 +1,50 @@
 {
-  "id": "coolcode-tool-template",
-  "title": "CoolCode Tool Starter",
-  "description": "A browser-only example that trims lines and removes exact duplicates.",
-  "category": "security",
-  "tags": ["text", "lines", "duplicates"],
-  "icon": "scan-search",
-  "url": "/coolcode-tool-template/",
-  "source": "https://github.com/jsdyer/coolcode-tool-template",
+  "id": "bridgeledger",
+  "title": "Bridge Ledger",
+  "description": "Look up historical Nova Scotia bridge inspections and compare dated ratings on the same scale.",
+  "category": "disclosures",
+  "tags": [
+    "Nova Scotia",
+    "Halifax",
+    "Annapolis",
+    "bridges",
+    "inspections",
+    "FOIPOP",
+    "public works"
+  ],
+  "icon": "landmark",
+  "url": "/bridgeledger/",
+  "source": "https://github.com/jsdyer/bridgeledger",
   "hosting": "project",
   "access": "browser",
   "data_info": {
-    "mode": "local",
-    "detail": "The browser reads the text you paste and compares its lines."
+    "mode": "snapshot",
+    "detail": "Two provincial information releases record bridge inspection dates, types and ratings. The NS Structures Database supplies locations by structure ID.",
+    "cadence": "Monthly",
+    "probes": [
+      {
+        "label": "Data retrieved",
+        "url": "https://coolcode.ca/bridgeledger/data/edition.json",
+        "path": [
+          "retrieved"
+        ],
+        "count_at": {
+          "path": [
+            "count"
+          ],
+          "unit": "inspection records"
+        }
+      },
+      {
+        "label": "Release years",
+        "url": "https://coolcode.ca/bridgeledger/data/edition.json",
+        "path": [
+          "start"
+        ],
+        "end_path": [
+          "end"
+        ]
+      }
+    ]
   }
 }

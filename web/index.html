@@ -1,33 +1,106 @@
 <!doctype html>
-<html lang="en-CA">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="{{DESCRIPTION}}">
-  <title>{{TITLE}} · CoolCode</title>
-  <link rel="stylesheet" href="./style.css">
-  <script type="module" src="./app.mjs"></script>
-</head>
-<body data-tool-id="{{TOOL_ID}}">
-  <a class="skip" href="#main">Skip to content</a>
-  <header><a href="https://coolcode.ca/">← CoolCode.ca</a><a href="{{SOURCE_URL}}">Source &amp; instructions ↗</a></header>
-  <main id="main">
-    <p class="eyebrow">Browser tool starter</p>
-    <h1>{{TITLE}}</h1>
-    <p class="intro">{{DESCRIPTION}}</p>
-    <section aria-labelledby="example-title">
-      <h2 id="example-title">Clean a list</h2>
-      <p>Trim spaces, skip blank lines and remove exact duplicates. Capitalization stays distinct.</p>
-      <div class="panels">
-        <div><label for="input">Your lines</label><textarea id="input" rows="10" maxlength="100000" spellcheck="false" placeholder="Paste one item per line"></textarea></div>
-        <div><label for="output">Cleaned lines</label><textarea id="output" rows="10" readonly spellcheck="false"></textarea></div>
+<html lang="en-CA" data-tool="{{TOOL_ID}}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="{{DESCRIPTION}}" />
+    <title>{{TITLE}} · CoolCode</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script type="module" src="./app.mjs"></script>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <nav>
+          <a href="https://coolcode.ca/">CoolCode.ca</a
+          ><a href="#sources">Sources &amp; method</a>
+        </nav>
+        <div class="mast">
+          <h1>{{TITLE}}</h1>
+          <p>
+            Find a structure in Halifax or Annapolis County and compare
+            inspections from two released Nova Scotia Public Works files.
+          </p>
+        </div>
       </div>
-      <div class="actions"><button id="sample" type="button">Load example</button><button id="clear" type="button">Clear</button><button id="copy" type="button" hidden>Copy result</button></div>
-      <p id="status" role="status" aria-live="polite">Paste a list to begin.</p>
-      <noscript><p>This tool needs JavaScript to process your text. The source is available above.</p></noscript>
-    </section>
-    <aside aria-label="Privacy"><strong>Stays on your device.</strong> This example makes no API requests and does not save your text. Reloading clears it.</aside>
-  </main>
-  <footer>Part of <a href="https://coolcode.ca/">the CoolCode collection</a>.</footer>
-</body>
+    </header>
+    <main class="wrap">
+      <p id="edition" role="status">Loading the published records…</p>
+      <section>
+        <h2>Look up a bridge</h2>
+        <div class="controls">
+          <label class="wide"
+            >Bridge name or structure ID<input
+              type="search"
+              id="search"
+              placeholder="Anderson Brook, Shad Bay, HFX146…" /></label
+          ><label>Records in view<select id="scope"></select></label
+          ><label>Inspection type<select id="level"></select></label>
+        </div>
+        <div class="controls">
+          <label class="wide"
+            >Matching structure<select id="bridge"></select
+          ></label>
+        </div>
+        <p id="matchcount" class="hint" role="status"></p>
+        <h2 id="structure"></h2>
+        <p id="location"></p>
+        <div id="finding" class="feature" aria-live="polite"></div>
+        <div
+          class="scroll"
+          tabindex="0"
+          role="region"
+          aria-label="Dated inspections with links to original rows"
+        >
+          <table
+            id="visits"
+            aria-label="Dated inspections with links to original rows"
+          ></table>
+        </div>
+        <button type="button" id="csv">
+          Download the selected inspections
+        </button>
+      </section>
+      <section>
+        <h2>Read the ratings</h2>
+        <p>
+          Level 1 is a general inspection on a three-point scale. Level 2 uses a
+          separate scale from 0 to 9. A Level 2v verifies an earlier inspection
+          and can have an empty rating. The comparison uses finalised
+          inspections of the chosen type. The table also identifies unfinished
+          records.
+        </p>
+      </section>
+      <noscript
+        ><p>
+          Enable JavaScript to explore the records. The sources and full guide
+          are available below.
+        </p></noscript
+      >
+    </main>
+    <footer id="sources" class="wrap">
+      <h2>Sources &amp; method</h2>
+      <p>
+        The 2020 extract covers Halifax and Annapolis structure IDs. The 2023
+        selection contains reviewed rows from three scan pages. Each release
+        captures the latest inspection of each type available to the department
+        at that time. These historical records describe what inspectors recorded
+        on the dates shown. Consult Public Works for current conditions.
+      </p>
+      <p>
+        <a
+          href="https://data.novascotia.ca/Roads-Driving-and-Transport/Structures-Database/gs26-c3fm"
+          >Provincial Structures Database</a
+        >
+        ·
+        <a
+          href="https://openinformation.novascotia.ca/download/5twe-uvhv/application/pdf#page=2"
+          >Public Works rating guide</a
+        >
+      </p>
+      <p>
+        <a href="{{SOURCE_URL}}#readme">Read the full guide and data notes</a>
+      </p>
+    </footer>
+  </body>
 </html>

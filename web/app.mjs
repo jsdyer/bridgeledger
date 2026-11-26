@@ -173,7 +173,9 @@ try {
   byId("bridge").onchange = render;
   byId("level").onchange = render;
   byId("csv").onclick = () => downloadCsv("bridge-inspections.csv", csv);
-  filter(new URLSearchParams(location.search).get("id") || "ANN002");
+  const params = new URLSearchParams(location.search);
+  if (["1", "2", "2v", "all"].includes(params.get("level"))) byId("level").value = params.get("level");
+  filter(params.get("id") || "ANN002");
 } catch {
   failed();
 }

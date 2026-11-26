@@ -10,6 +10,8 @@ Find a named bridge in the Halifax and Annapolis County records. Compare dated r
 Anderson Brook Bridge in Annapolis County received a general rating of Good on April 22, 2020 and Fair on April 26, 2023. Its detailed inspections use a separate scale. The place link comes from a unique match on the provincial structure ID.
 <!-- /coolcode:guide -->
 
+[Browse bridge inspection histories](https://coolcode.ca/bridgeledger/bridges/) for named structures with two or more qualifying inspection dates on one rating scale. Each profile links to the cited release pages and opens that structure and inspection level in the explorer.
+
 ## Sources and interpretation
 
 The 2020 information release supplies entries for the two county prefixes ANN and HFX. The 2023 scan contributes 28 reviewed structures from PDF pages 3, 100 and 103. The first edition has 727 structures and 1,619 distinct inspection records. A case can appear in both releases. Identical inspection details share one history entry with both citations. The CSV preserves a row for each supporting source.
